@@ -73,13 +73,25 @@ public class List<T> {
     public T erase(int pos) throws Exception {
         if (pos < 0 || pos >= size) throw new Exception();
         T ret = arr[pos-1];
-        for (int i = pos-1; i < arr.length; i++) {
+        for (int i = pos-1; i < arr.length-1; i++) {
             arr[i] = arr[i+1];
         }
         this.size--;
         if (this.size == arr.length / 4)
             resize(arr.length / 2);
         return ret;
+    }
+
+    /**
+     * Replace the element at given position
+     * @param pos,newValue
+     * @return
+     * @throws Exception (if the given position is out of range)
+     */
+    public void replace(int pos, T newValue) throws Exception {
+        if (pos < 0 || pos >= size)
+            throw new Exception();
+        arr[pos] = newValue;
     }
 
     /**

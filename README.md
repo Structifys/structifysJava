@@ -8,7 +8,7 @@
 
 # Data Structures
 
-- [ ] List
+- [x] List **Done**
 - [x] Queue **In progress**
 - [x] Linked List (Single/Doubly) **Done**
 - [ ] Stack

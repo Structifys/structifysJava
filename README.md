@@ -10,7 +10,7 @@
 
 - [ ] List
 - [x] Queue **In progress**
-- [ ] Linked List (Single/Doubly)
+- [x] Linked List (Single/Doubly) **Done**
 - [ ] Stack
 - [ ] Hash Table (Set/Map)
 - [ ] Binary Search Tree (Set/Map)

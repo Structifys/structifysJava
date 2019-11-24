@@ -34,7 +34,7 @@ public class List<T> {
 
     /**
      * Return the dimensions of the list
-     * @param length
+     * @return length
      */
 
     public int getLength(){
@@ -53,11 +53,32 @@ public class List<T> {
     /**
      ** Retrieve and remove the last element of the list
      * @return T ret
+     * @throws Exception
      */
     public T removeBack() throws Exception {
         if (this.size == 0) throw new Exception();
         T ret = arr[this.size - 1];
         this.size--;
+        if (size < arr.length / 4)
+            resize(arr.length / 2);
+        return ret;
+    }
+
+    /**
+     ** Erase an elemet at given position
+     * @param pos
+     * @return ret 
+     * @throws Exception
+     */
+    public T erase(int pos) throws Exception {
+        if (pos < 0 || pos >= size) throw new Exception();
+        T ret = arr[pos-1];
+        for (int i = pos-1; i < arr.length; i++) {
+            arr[i] = arr[i+1];
+        }
+        this.size--;
+        if (this.size == arr.length / 4)
+            resize(arr.length / 2);
         return ret;
     }
 
@@ -103,7 +124,7 @@ public class List<T> {
      */
     private void resize(int newCapacity) {
         T[] newArray = (T[]) Array.newInstance(this.type, newCapacity);
-        for (int i = 0; i < this.arr.length; i++) {
+        for (int i = 0; i < this.arr.length && i < newArray.length; i++) {
             newArray[i] = this.arr[i];
         }
         this.arr = newArray;

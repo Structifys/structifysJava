@@ -1,19 +1,40 @@
 package DataStructure.LinkedList;
+
 /**
- ** Generic Linked List Implementation 
+ ** Generic Linked List Implementation
+ * 
  * @param <T>
- * @author Ken Morel
+ * @author Ken Morel, Javier Paez
  */
 
 public class LinkedList<T> {
     class LinkedListNode {
-        public T value;
-        public LinkedListNode next;
-        
-        public LinkedListNode(final T value) {
+        private T value;
+        private LinkedListNode next;
+
+        public LinkedListNode(T value) {
             this.value = value;
         }
+
+        // *setters
+        public void setValue(T value) {
+            this.value = value;
+        }
+
+        public void setNext(LinkedListNode next) {
+            this.next = next;
+        }
+
+        // *getters
+        public T getValue() {
+            return this.value;
+        }
+
+        public LinkedListNode getNext() {
+            return this.next;
+        }
     }
+
     private LinkedListNode head;
     private LinkedListNode tail;
     private int size;
@@ -29,15 +50,16 @@ public class LinkedList<T> {
 
     /**
      ** Insert an element at the front of the list
+     * 
      * @param value
      */
 
     public void addFront(final T value) {
         final LinkedListNode newNode = new LinkedListNode(value);
-        if (size == 0) 
+        if (size == 0)
             head = tail = newNode;
         else {
-            newNode.next = head;
+            newNode.setNext(head);
             head = newNode;
         }
         size++;
@@ -45,14 +67,16 @@ public class LinkedList<T> {
 
     /**
      ** Retrieve and remove the element at the front of the list
+     * 
      * @return T ret
      */
 
     public T removeFront() throws Exception {
-        if (size == 0) throw new Exception();
-        T ret = head.value;
-        LinkedListNode tmp = head.next;
-        head.next = null;
+        if (size == 0)
+            throw new Exception();
+        T ret = head.getValue();
+        LinkedListNode tmp = head.getNext();
+        head.setNext(null);
         head = tmp;
         size--;
         return ret;
@@ -60,15 +84,16 @@ public class LinkedList<T> {
 
     /**
      ** Insert an element at the end of the list
+     * 
      * @param value
      */
 
     public void addBack(final T value) {
         final LinkedListNode newNode = new LinkedListNode(value);
-        if (size == 0) 
+        if (size == 0)
             head = tail = newNode;
         else {
-            tail.next = newNode;
+            tail.setNext(newNode);
             tail = newNode;
         }
         size++;
@@ -76,23 +101,25 @@ public class LinkedList<T> {
 
     /**
      ** Retrieve and remove the element at the end of the list
-     * @return T ret 
+     * 
+     * @return T ret
      */
     public T removeBack() throws Exception {
-        if (size == 0) throw new Exception();
-        T ret = tail.value;
+        if (size == 0)
+            throw new Exception();
+        T ret = tail.getValue();
         if (size == 1)
             head = tail = null;
         else {
             LinkedListNode current = head;
             while (current.next != tail)
-                current = current.next;
-            current.next = null;
+                current = current.getGext();
+            current.setNext(null);
             tail = current;
         }
 
         size--;
         return ret;
     }
-    
+
 }

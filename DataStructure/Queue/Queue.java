@@ -1,5 +1,11 @@
 import java.lang.reflect.Array;
 
+/**
+ ** Queue Implementation
+ * 
+ * @param <T>
+ * @author Javier Paez
+ */
 public class Queue<T> {
     private T[] arr;
     private int size;

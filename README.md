@@ -9,9 +9,9 @@
 # Data Structures
 
 - [x] List
-- [x] Queue **In progress**
-- [x] Linked List (Single/Doubly)
-- [ ] Stack
+- [x] Queue
+- [x] Linked List (Single/Doubly) **In progrees**
+- [x] Stack
 - [ ] Hash Table (Set/Map)
 - [ ] Binary Search Tree (Set/Map)
 - [ ] Priority Queue

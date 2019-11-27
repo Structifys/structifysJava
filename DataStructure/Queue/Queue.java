@@ -1,22 +1,16 @@
-import java.lang.reflect.Array;
+import DataStructure.LinkedList.LinkedList;;
 
 /**
  ** Queue Implementation
  * 
  * @param <T>
- * @author Javier Paez
+ * @author Javier Paez,Ken Morel
  */
 public class Queue<T> {
-    private T[] arr;
-    private int size;
-    private int tail;
-    private int head;
+    private LinkedList<T> queue;
 
-    public Queue(final Class<T> type) {
-        this.size = 0;
-        this.head = 0;
-        this.tail = -1;
-        arr = (T[]) Array.newInstance(type, 10);
+    public Queue() {
+        queue = new LinkedList<T>();
     }
 
     /**
@@ -29,12 +23,7 @@ public class Queue<T> {
      * 
      */
     public void enQueue(final T value) {
-        if (size == arr.length) {
-            resize(2 * arr.length);
-        }
-        tail++;
-        arr[tail] = value;
-        size++;
+        queue.addBack(value);
     }
 
     /**
@@ -44,7 +33,7 @@ public class Queue<T> {
      */
 
     public int size() {
-        return this.size;
+        return queue.getSize();
     }
 
     /**
@@ -52,15 +41,8 @@ public class Queue<T> {
      * 
      * @return head of the queue
      */
-    public T deQueue() throws Exception {
-        if (size == 0) {
-            throw new Exception(); // ! Throw an exception if there's no element
-        }
-        T retValue = arr[head];
-        head++;
-        head %= arr.length;
-        size--;
-        return retValue;
+    public T deQueue() {
+        return (queue.getSize() == 0 ? null : queue.removeFront());
     }
 
     /**
@@ -70,7 +52,7 @@ public class Queue<T> {
      * @return head of the queue
      */
     public T peek() {
-        return (size == 0 ? null : arr[head]);
+        return (queue.getSize() == 0 ? null : queue.getHead());
     }
 
     /**
@@ -79,26 +61,8 @@ public class Queue<T> {
      * 
      * @return head of the queue or null if queue is empty
      */
-    public T poll() {
-        if (size == 0)
-            return null;
-
-        final T retValue = arr[head];
-        head++;
-        head %= arr.length;
-        size--;
-        return retValue;
-    }
-
-    /**
-     ** Resize the array when reach full capacity.
-     * 
-     * @param newCapacity
-     * 
-     */
-    // TODO: implement
-    private void resize(final int newCapacity) {
-
+    public T poll() throws Exception {
+        return queue.getSize() == 0 ? null : queue.removeFront();
     }
 
 }

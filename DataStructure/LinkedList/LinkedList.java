@@ -44,6 +44,15 @@ public class LinkedList<T> {
         size = 0;
     }
 
+    // *getters
+    public T getHead() {
+        return head.getValue();
+    }
+
+    public T getTail() {
+        return tail.getValue();
+    }
+
     public int getSize() {
         return size;
     }
@@ -54,8 +63,8 @@ public class LinkedList<T> {
      * @param value
      */
 
-    public void addFront(final T value) {
-        final LinkedListNode newNode = new LinkedListNode(value);
+    public void addFront(T value) {
+        LinkedListNode newNode = new LinkedListNode(value);
         if (size == 0)
             head = tail = newNode;
         else {
@@ -113,7 +122,7 @@ public class LinkedList<T> {
         else {
             LinkedListNode current = head;
             while (current.next != tail)
-                current = current.getGext();
+                current = current.getNext();
             current.setNext(null);
             tail = current;
         }
